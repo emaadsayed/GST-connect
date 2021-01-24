@@ -108,6 +108,10 @@ img {
   border-radius: 50%;
 }
 
+.my-profile{
+  cursor: pointer;
+}
+
 .user-info {
   padding-top: 1.5em;
   text-align: center;

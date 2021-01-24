@@ -1,11 +1,212 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- Bootstrap -->
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+     <!-- Font Awesome -->
+     <link
+     rel="stylesheet"
+     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+   />
+   <!-- AOS -->
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+   <!--Material Icons-->
+   <link
+     href="https://fonts.googleapis.com/icon?family=Material+Icons"
+     rel="stylesheet"
+   />
+    <title>SIESGSTportal</title>
+</head>
+<body>
+
+
+    <!--Login Modal -->
+    <div class="modal fade" id="loginModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header justify">
+          <h5 class="modal-title " id="exampleModalLabel1">Hola Gstian</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <span class="material-icons">account_circle</span>
+          <form action="/login" method="POST" class="needs-validation" id="loginform" novalidate>
+            <div class="form-row">
+              <div class="col-12">
+                  <input type="text" pattern="^[a-zA-Z-1-9._-]+@siesgst.ac.in\s*?$" class="form-control" name="email" id="loginemail" placeholder="GST email" autocomplete='off'
+                  required>
+                <div class="invalid-feedback">
+                  Please enter your GST email
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12 ">
+                <input type="password" class="form-control" name="password" id="loginpassword" placeholder="Password"
+                  autocomplete='off' required>
+                <div class="invalid-feedback">
+                  Please enter a password
+                </div>
+              </div>
+            </div>
+            <div class="form-row-button text-center">
+              <button class="btn mb-3" type="submit">Log in</button>
+              <p class="mb-0" id="hideRegister">Don't have an account? <a href="#" class="signup">Register</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Register Modal -->
+  <div class="modal fade" id="registerModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel2"
+    aria-hidden="true" style="overflow:auto">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header justify">
+          <h5 class="modal-title " id="exampleModalLabel2">Get Started</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <span class="material-icons">account_circle</span>
+          <form action="/signup" method="POST" class="needs-validation" id="registerform" novalidate>
+            <div class="form-row">
+              <div class="col-12">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Full name" autocomplete='off'
+                  required>
+                <div class="invalid-feedback">
+                  Please enter your full name
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12 ">
+                <input type="text" pattern="^[a-zA-Z-1-9._-]+@siesgst.ac.in\s*?$" class="form-control" name="email" id="email" placeholder="GST email" autocomplete='off'
+                  required>
+                <div class="invalid-feedback">
+                  Please enter your GST email
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12">
+                <input type="password" pattern="^[A-Za-z0-9_@./$%!#&+-]{6,}$" class="form-control" name="password" id="password" placeholder="Password"
+                  autocomplete='off' required>
+                <div class="invalid-feedback">
+                  Please enter a password(Min 6 characters required)
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12  text-center">
+                <select id="year" class="form-control" name="year" form="registerform" required>
+                  <option value="FE">FE</option>
+                  <option value="SE">SE</option>
+                  <option value="TE">TE</option>
+                  <option value="BE">BE</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a year
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12 text-center" id="branch">
+                <select id="branch" class="form-control" name="branch" form="registerform" required>
+                  <option value="CE">CE</option>
+                  <option value="IT">IT</option>
+                  <option value="EXTC">EXTC</option>
+                  <option value="ECE">ECE</option>
+                  <option value="ME">ME</option>
+                  <option value="PPT">PPT</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a branch
+                </div>
+              </div>
+            </div>
+            <div class="form-row-button text-center">
+              <button class="btn " type="submit">Register</button>
+              <p class="p1 mb-0">Already have an account? <a href="#" id="regTolog" class="login" >Login</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!--**************************  Hero Section  **************************-->
+
+<div class="hero">
+        <div class="container">
+    
+            <nav class="top-nav">
+                <img src="/img/MAIN.png" alt="">
+              </nav>
+      
+    
+
+    <div class="hero-section">
+        <h1 class="hero-title">Welcome to <br>GST CONNECT</h1>
+        <p class="hero-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis architecto iusto cupiditate consequatur aliquid facilis aut doloribus, natus velit excepturi iste rerum dolorum iure nihil esse itaque tenetur.</p>
+        <div class="buttons">
+            <a href="#" class="button-1 signup">SIGN UP</a>
+            <a href="#" id="loginBtn" class="button-2 login">SIGN IN</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--**************************  Footer  **************************-->
+
+<div class="footer">
+<div class="container">
+    <div class="footer-section">
+        <p class="logo f-logo">GST CONNECT<span>.</span></p>
+        <p class="copyright">@Copyright2021</p>
+        <p class="develop">Developed by Wagh & Sons</p>
+    </div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      //login and Sign-up Modal
+      $(document).ready(function () {
+        $("#loginBtn").click(function () {
+          $("#loginModal").modal("show");
+          $("#registerModal").modal("hide");
+        });
+        $(".signup").click(function () {
+          $("#registerModal").modal("show");
+          $("#loginModal").modal("hide");
+        });
+        $("#regTolog").click(function () {
+          $("#loginModal").modal("show");
+          $("#registerModal").modal("hide");
+        });
+        $("#launch").click(function () {
+          $("#modal").modal("show");
+        });
+      });
+      </script>
+
+</body>
 </html>

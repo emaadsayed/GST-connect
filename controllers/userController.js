@@ -1,3 +1,7 @@
+module.exports.myprofile = async (req, res) => {
+    res.render('myprofile');
+}
+
 module.exports.connect = async (req, res) => {
     res.render('connect');
 }

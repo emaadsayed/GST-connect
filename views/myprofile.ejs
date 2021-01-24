@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SIESGSTportal</title>
-    <link rel="stylesheet" href="/stylesheets/createproject.css" />
+    <link rel="stylesheet" href="/stylesheets/myprofile.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -79,21 +79,70 @@
              <div class="container-one">
         
 
-        <p class="line">ADD PROJECT</p>
+        <p class="line">MY PROFILE</p>
         <form action="" method="POST">
             <div class="card-body">
+                <div>
+                    <label>Profile Photo</label>
+                    <input type="file" name="cover" class="filepond">
+                  </div>
                 <div class="event-name">
-                    <p class="name">Name : </p>
-                    <input type="text" placeholder="Name of the Project" name="" id="">
-                    <p class="name">Stack : </p>
-                    <input type="text" placeholder="Name of the stack used" name="" id="">
-                    <p class="name">Description : </p>
-                    <textarea type="text" class="i-name desc" name="description" placeholder="Enter description"></textarea>
-                    <label for="cars">Choose a status : </label>
-                    <select name="" id="" class="i-name" >
-                      <option value="active">Active</option>
-                      <option value="completed">Completed</option>
-                    </select>
+                    <div class="event-name-child">
+                        <p class="name">Name : </p>
+                        <input type="text" placeholder="Full Name" name="name" id="name">
+                    </div>
+                    <div class="event-name-child">
+                        <label class="name" for="branch">Choose your branch : </label>
+                        <select name="branch" id="branch" class="i-name" >
+                        <option value="IT">IT</option>
+                        <option value="CE">CE</option>
+                        <option value="EXTC">EXTC</option>
+                        <option value="ME">ME</option>
+                        <option value="PPT">PPT</option>
+                        <option value="ECE">ECE</option>
+                        </select>
+                    </div>
+                    <div class="event-name-child">
+                        <label class="name" for="year">Choose your year : </label>
+                        <select name="year" id="year" class="i-name" >
+                          <option value="FE">FE</option>
+                          <option value="SE">SE</option>
+                          <option value="TE">TE</option>
+                          <option value="BE">BE</option>
+                        </select>
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Contact : </p>
+                        <input type="text" placeholder="Contact" name="contact" id="contact">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Instagram : </p>
+                        <input type="text" placeholder="Instagram link" name="instagram" id="instagram">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">LinkedIn : </p>
+                        <input type="text" placeholder="LinkedIn link" name="linkedIn" id="linkedIn">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Facebook : </p>
+                        <input type="text" placeholder="Facebook link" name="facebook" id="facebook">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Skills : </p>
+                        <input type="text" placeholder="Skills" name="skills" id="skills">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Bio : </p>
+                        <textarea type="text" class="i-name desc" name="bio" id="bio" placeholder="Enter your bio"></textarea>
+                    </div>
+                    <div class="event-name-child">
+                        <label class="name" for="year">Type of Profile : </label>
+                        <select name="status" id="status" class="i-name" >
+                        <option value="private">Private</option>
+                        <option value="public">Public</option>
+                        </select>
+                    </div>
+                   
                 </div>
                 <div><input type="submit" name="" value="SUBMIT" class="s-button"></div>
 

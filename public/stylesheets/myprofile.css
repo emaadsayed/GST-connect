@@ -108,8 +108,8 @@ img {
   }
 
   .my-profile{
-    cursor: pointer;
-}
+      cursor: pointer;
+  }
   
   .user-info {
     padding-top: 1.5em;
@@ -259,7 +259,7 @@ background-color: #fcfaee;
     border: none;
 }
 
-.event-name input, textarea{
+.event-name input, textarea, select{
     padding: 0.5em;
     margin: 1em 0 1.75em;
     width: 100%;
@@ -291,7 +291,7 @@ textarea{
   font-size: 0.65em;
   padding: 0.5em 1.75em;
   position: absolute;
-  top: 55em;
+  top: 117.5em;
   right: 2em;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
@@ -299,8 +299,8 @@ textarea{
 
 .filepond{
   margin-top: 1em;
-  height:100px;
-  width: 222px;
+  height:150px;
+  width: 150px;
 }
 
 
@@ -379,11 +379,8 @@ font-size: 0.9em;
     display: inherit;
   }
   .s-button{
-    top: 54.5em;
+    top: 118em;
 }
-  .filepond{
-   width: 225px;
-  }
 
   .inner a{
     font-size: 0.8em;
@@ -397,7 +394,7 @@ font-size: 0.9em;
     }
 
     .s-button{
-        top: 58em;
+        top: 78em;
     }
 
     .card-body{
@@ -415,10 +412,16 @@ font-size: 0.9em;
         width: 50%;
     }
 
-    .filepond{
-      margin-top: 1em;
-      width: 250px;
+    .event-name{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
+
+    .event-name-child{
+        width: 45%;
+    }
+
 }
 
 
