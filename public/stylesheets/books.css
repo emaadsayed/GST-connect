@@ -39,10 +39,10 @@ img {
 
 /*----------------------- TOP-NAV -------------------------*/
 
-.top-nav h1 {
-  font-weight: bold;
-  font-size: 1.5em;
-}
+  .top-nav img {
+    height: auto;
+    width: 150px;
+  }
 
 .top-nav span {
   color: #e92020;
