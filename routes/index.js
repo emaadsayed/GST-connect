@@ -5,4 +5,8 @@ const indexController = require("../controllers/indexController");
 /* GET home page. */
 router.get('/', indexController.index);
 
+router.post('/signup', indexController.signUp);
+
+router.post('/login', indexController.login);
+
 module.exports = router;
