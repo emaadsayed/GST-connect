@@ -22,9 +22,10 @@ module.exports.profile = async (req, res) => {
     try {
       let user = await profile.save();
       req.session.userObj = user;
-      req.session.image = user.coverImagePath
+      req.session.image = user.coverImagePath;
       res.redirect("/users/myprofile");
     } catch (e) {
+      console.log(e)
       res.redirect("/users/myprofile");
     }
 };

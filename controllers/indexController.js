@@ -17,8 +17,9 @@ module.exports.signUp = async (req, res) => {
         });
         let data = await user.save();
         req.session.userObj = data;
+        req.session.image = data.coverImagePath;
         res.redirect("/users/connect");
-      } catch {
+      } catch{
         res.redirect("/");
       }
     }

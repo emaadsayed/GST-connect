@@ -31,8 +31,6 @@ const user = new mongoose.Schema(
     },
     contact: {
       type: String,
-      minlength: 10,
-      maxlength: 10,
       default: null
     },
     instagram: {
@@ -62,11 +60,9 @@ const user = new mongoose.Schema(
   },
   coverImage: {
     type: Buffer,
-    required: true
 },
   coverImageType: {
     type: String,
-    required: true
   }
 },
   { timestamps: true }
