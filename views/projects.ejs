@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIESGSTportal</title>
+  <link rel="stylesheet" href="/stylesheets/projects.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://use.fontawesome.com/429919f3bd.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!--------------------- TOP-NAV ---------------------->
+
+    <div class="top-nav">
+      <h1>SIESGSTportal<span>.</span></h1>
+      <i class="material-icons menu">menu</i>
+    </div>
+
+    <!--------------------- SIDE-NAV ---------------------->
+
+    <div class="position">
+      <div class="side-nav open">
+        <div class="user-info">
+          <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg" alt="Avatar" class="avatar" />
+          <h3>Yash Wagh</h3>
+        </div>
+
+        <ul>
+          <li class="border">
+            <i class="material-icons">settings_input_antenna</i>
+            <a href="/users/connect">Connect</a>
+          </li>
+
+          <li class="border">
+            <i class="material-icons">recent_actors</i>
+            <a href="/users/projects">Projects<span class="fas fa-caret-down before "></span></a>
+            <ul>
+              <div class="inner">
+                <li id="i-top"> <i class="material-icons">person</i><a href="/users/myprojects">My Projects</a></li>
+                <li> <i class="material-icons">create</i><a href="/users/createproject">Create Project</a></li>
+              </div>
+            </ul>
+          </li>
+
+          <li class="border">
+            <i class="material-icons">
+              menu_book</i>
+            <a class="extra" href="/users/books">Books<span class="fas fa-caret-down beforeTwo "></span></a>
+            <ul>
+              <div class="innerTwo">
+                <li id="i-top"> <i class="material-icons">person</i><a href="/users/mybooks">My Books</a></li>
+                <li> <i class="material-icons">create</i><a href="/users/createbook">Create Book</a></li>
+              </div>
+            </ul>
+          </li>
+          <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
+            <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+          </form>
+        </ul>
+      </div>
+    </div>
+    <!--------------------- RIGHT-SECTION ---------------------->
+
+    <div class="right-section">
+
+      <p class="line">PROJECTS</p>
+      <form action="" class="search-bar">
+        <input type="text" placeholder="What are you looking for......?">
+        <button>Search</button>
+      </form>
+
+      <div class="all-cards">
+        <!-- Card -->
+        <div class="connect-card">
+
+          <div class="upper-section">
+            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
+            <div class="right-card">
+              <p class="user-name">Yash Wagh</p>
+              <div class="user-details">
+                <p class="year">SE</p>
+                <p class="field">IT</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lower-section">
+            <p class="user-name">
+              Attendance Calculator
+            </p>
+
+            <p class="status-o">Active</p>
+            <p class="designation">
+              MySql, Java
+            </p>
+            <p class="user-bio">
+              Donec lorem dui, commodo ac dolor sed, commodo mattis felis. Praesent euismod malesuada rhoncus. Curabitur
+              ultrices, mauris vel sodales eleifend, mi nibh fermentum elit, sed tristique magna tortor ac nisl.
+              Maecenas ut lacus sit amet tellus bibendum feugiat. Maecenas suscipit vestibulum ex sit amet aliquet. Sed
+              non pharetra dolor. Nullam ac vestibulum nisl, a tempus justo.
+            </p>
+
+            <div class="user-contact">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </div>
+          </div>
+
+        </div>
+        <!-- Card End -->
+        <!-- Card -->
+        <div class="connect-card">
+
+          <div class="upper-section">
+            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
+            <div class="right-card">
+              <p class="user-name">Yash Wagh</p>
+              <div class="user-details">
+                <p class="year">SE</p>
+                <p class="field">IT</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lower-section">
+            <p class="user-name">
+              Ball Run Refactor
+            </p>
+
+            <p class="status-c">Completed</p>
+            <p class="designation">
+              C#, C++
+            </p>
+            <p class="user-bio">
+              Donec lorem dui, commodo ac dolor sed, commodo mattis felis. Praesent euismod malesuada rhoncus. Curabitur
+              ultrices, mauris vel sodales eleifend, mi nibh fermentum elit, sed tristique magna tortor ac nisl.
+              Maecenas ut lacus sit amet tellus bibendum feugiat. Maecenas suscipit vestibulum ex sit amet aliquet. Sed
+              non pharetra dolor. Nullam ac vestibulum nisl, a tempus justo.
+            </p>
+            <div class="user-contact">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </div>
+          </div>
+
+        </div>
+        <!-- Card End -->
+
+        <!-- Card -->
+        <div class="connect-card">
+
+          <div class="upper-section">
+            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
+            <div class="right-card">
+              <p class="user-name">Yash Wagh</p>
+              <div class="user-details">
+                <p class="year">SE</p>
+                <p class="field">IT</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lower-section">
+            <p class="user-name">
+              Attendance Calculator
+            </p>
+
+            <p class="status-o">Active</p>
+            <p class="designation">
+              MySql, Java
+            </p>
+            <p class="user-bio">
+              Donec lorem dui, commodo ac dolor sed, commodo mattis felis. Praesent euismod malesuada rhoncus. Curabitur
+              ultrices, mauris vel sodales eleifend, mi nibh fermentum elit, sed tristique magna tortor ac nisl.
+              Maecenas ut lacus sit amet tellus bibendum feugiat. Maecenas suscipit vestibulum ex sit amet aliquet. Sed
+              non pharetra dolor. Nullam ac vestibulum nisl, a tempus justo.
+            </p>
+
+            <div class="user-contact">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </div>
+          </div>
+
+        </div>
+        <!-- Card End -->
+        <!-- Card -->
+        <div class="connect-card">
+
+          <div class="upper-section">
+            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
+            <div class="right-card">
+              <p class="user-name">Yash Wagh</p>
+              <div class="user-details">
+                <p class="year">SE</p>
+                <p class="field">IT</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lower-section">
+            <p class="user-name">
+              Ball Run Refactor
+            </p>
+
+            <p class="status-c">Completed</p>
+            <p class="designation">
+              C#, C++
+            </p>
+            <p class="user-bio">
+              Donec lorem dui, commodo ac dolor sed, commodo mattis felis. Praesent euismod malesuada rhoncus. Curabitur
+              ultrices, mauris vel sodales eleifend, mi nibh fermentum elit, sed tristique magna tortor ac nisl.
+              Maecenas ut lacus sit amet tellus bibendum feugiat. Maecenas suscipit vestibulum ex sit amet aliquet. Sed
+              non pharetra dolor. Nullam ac vestibulum nisl, a tempus justo.
+            </p>
+            <div class="user-contact">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </div>
+          </div>
+
+        </div>
+        <!-- Card End -->
+
+
+      </div>
+
+
+
+    </div>
+
+
+    <script>
+      const burger = document.querySelector(".top-nav i");
+      const side = document.querySelector(".side-nav");
+
+      burger.addEventListener("click", (e) => {
+        side.classList.toggle("open");
+        e.preventDefault();
+      });
+      const add = document.querySelector(".inner");
+      const before = document.querySelector(".before");
+
+
+      before.addEventListener("click", (e) => {
+        add.classList.toggle("add")
+        before.classList.toggle("after")
+
+        e.preventDefault();
+      });
+
+      const addTwo = document.querySelector(".innerTwo");
+      const beforeTwo = document.querySelector(".beforeTwo");
+
+      beforeTwo.addEventListener("click", (e) => {
+        addTwo.classList.toggle("addTwo")
+        beforeTwo.classList.toggle("afterTwo")
+
+        e.preventDefault();
+      });
+
+    </script>
+</body>
+
+</html>

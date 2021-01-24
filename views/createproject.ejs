@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIESGSTportal</title>
+    <link rel="stylesheet" href="/stylesheets/createproject.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script defer src="/javascripts/fileUpload.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+        
+      <!--------------------- TOP-NAV ---------------------->
+
+      <div class="top-nav">
+        <h1>SIESGSTportal<span>.</span></h1>
+        <i class="material-icons menu">menu</i>
+      </div>
+
+      <!--------------------- SIDE-NAV ---------------------->
+
+      <div class="position">
+        <div class="side-nav open">
+          <div class="user-info">
+            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg" alt="Avatar" class="avatar" />
+            <h3>Yash Wagh</h3>
+          </div>
+  
+          <ul>
+            <li class="border">
+              <i class="material-icons">settings_input_antenna</i>
+              <a href="/users/connect">Connect</a>
+            </li>
+  
+            <li class="border">
+              <i class="material-icons">recent_actors</i>
+              <a href="/users/projects">Projects<span class="fas fa-caret-down before "></span></a>
+              <ul>
+                <div class="inner">
+                  <li id="i-top"> <i class="material-icons">person</i><a href="/users/myprojects">My Projects</a></li>
+                  <li> <i class="material-icons">create</i><a href="/users/createproject">Create Project</a></li>
+                </div>
+              </ul>
+            </li>
+  
+            <li class="border">
+              <i class="material-icons">
+                menu_book</i>
+              <a class="extra" href="/users/books">Books<span class="fas fa-caret-down beforeTwo "></span></a>
+              <ul>
+                <div class="innerTwo">
+                  <li id="i-top"> <i class="material-icons">person</i><a href="/users/mybooks">My Books</a></li>
+                  <li> <i class="material-icons">create</i><a href="/users/createbook">Create Book</a></li>
+                </div>
+              </ul>
+            </li>
+            <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
+              <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+            </form>
+          </ul>
+        </div>
+      </div>
+  
+      <!--------------------- RIGHT-SECTION ---------------------->
+
+      
+             <div class="container-one">
+        
+
+        <p class="line">ADD PROJECT</p>
+        <form action="" method="POST">
+            <div class="card-body">
+                <div class="event-name">
+                    <p class="name">Name : </p>
+                    <input type="text" placeholder="Name of the Project" name="" id="">
+                    <p class="name">Stack : </p>
+                    <input type="text" placeholder="Name of the stack used" name="" id="">
+                    <p class="name">Description : </p>
+                    <textarea type="text" class="i-name desc" name="description" placeholder="Enter description"></textarea>
+                    <label for="cars">Choose a status : </label>
+                    <select name="" id="" class="i-name" >
+                      <option value="active">Active</option>
+                      <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div><input type="submit" name="" value="SUBMIT" class="s-button"></div>
+
+            </div>
+        </form>    
+  
+
+
+             </div>
+
+      
+    </div> <!--/Container-->
+
+    <script>
+        const burger = document.querySelector(".top-nav i");
+        const side = document.querySelector(".side-nav");
+  
+        burger.addEventListener("click", (e) => {
+          side.classList.toggle("open");
+          e.preventDefault();
+        });
+        const add = document.querySelector(".inner");
+        const before = document.querySelector(".before");
+  
+  
+        before.addEventListener("click", (e) => {
+          add.classList.toggle("add")
+          before.classList.toggle("after")
+  
+          e.preventDefault();
+        });
+  
+        const addTwo = document.querySelector(".innerTwo");
+        const beforeTwo = document.querySelector(".beforeTwo");
+  
+        beforeTwo.addEventListener("click", (e) => {
+          addTwo.classList.toggle("addTwo")
+          beforeTwo.classList.toggle("afterTwo")
+  
+          e.preventDefault();
+        });
+  
+      </script>
+  </body>
+</html>
