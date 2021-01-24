@@ -27,16 +27,15 @@ module.exports.signUp = async (req, res) => {
         let email = req.body.email.trim();
         User.find({ email: email })
           .then((user) => {
-              console.log(user)
             bcrypt.compare(
               req.body.password,
               user[0].password,
               function (err, result) {
                 if (result) {
-                //   req.session.userObj = user[0];
-                //   res.status(200);
-                //   res.redirect("/user");
-                res.send("success");
+                  req.session.userObj = user[0];
+                  // res.status(200);
+                  res.redirect("/users/connect");
+                // res.send("success");
                 } else {
                 //   res.status(401);
                 //   req.flash("homepageMessage", "Incorrect Password");
@@ -52,5 +51,5 @@ module.exports.signUp = async (req, res) => {
             // res.redirect("/");
             res.send("failed");
           }); 
-    }
+    } 
  
