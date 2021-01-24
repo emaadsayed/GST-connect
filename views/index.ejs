@@ -14,14 +14,12 @@
      rel="stylesheet"
      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
    />
-   <!-- AOS -->
-   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
    <!--Material Icons-->
    <link
      href="https://fonts.googleapis.com/icon?family=Material+Icons"
      rel="stylesheet"
    />
-    <title>SIESGSTportal</title>
+    <title>GST Connect</title>
 </head>
 <body>
 
@@ -39,10 +37,10 @@
         </div>
         <div class="modal-body text-center">
           <span class="material-icons">account_circle</span>
-          <form action="/login" method="POST" class="needs-validation" id="loginform" novalidate>
+          <form action="/login" method="POST" id="loginform" novalidate>
             <div class="form-row">
               <div class="col-12">
-                  <input type="text" pattern="^[a-zA-Z-1-9._-]+@siesgst.ac.in\s*?$" class="form-control" name="email" id="loginemail" placeholder="GST email" autocomplete='off'
+                  <input type="text" class="form-control" name="email" id="loginemail" placeholder="GST email" autocomplete='off'
                   required>
                 <div class="invalid-feedback">
                   Please enter your GST email
@@ -81,7 +79,7 @@
         </div>
         <div class="modal-body text-center">
           <span class="material-icons">account_circle</span>
-          <form action="/signup" method="POST" class="needs-validation" id="registerform" novalidate>
+          <form action="/signup" method="POST" id="registerform" novalidate>
             <div class="form-row">
               <div class="col-12">
                 <input type="text" class="form-control" name="name" id="name" placeholder="Full name" autocomplete='off'
@@ -93,7 +91,7 @@
             </div>
             <div class="form-row">
               <div class="col-12 ">
-                <input type="text" pattern="^[a-zA-Z-1-9._-]+@siesgst.ac.in\s*?$" class="form-control" name="email" id="email" placeholder="GST email" autocomplete='off'
+                <input type="text" class="form-control" name="email" id="email" placeholder="GST email" autocomplete='off'
                   required>
                 <div class="invalid-feedback">
                   Please enter your GST email
@@ -102,7 +100,7 @@
             </div>
             <div class="form-row">
               <div class="col-12">
-                <input type="password" pattern="^[A-Za-z0-9_@./$%!#&+-]{6,}$" class="form-control" name="password" id="password" placeholder="Password"
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password"
                   autocomplete='off' required>
                 <div class="invalid-feedback">
                   Please enter a password(Min 6 characters required)

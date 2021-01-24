@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIESGSTportal</title>
+  <title>GST Connect</title>
   <link rel="stylesheet" href="/stylesheets/projects.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -26,8 +26,12 @@
     <div class="position">
       <div class="side-nav open">
         <div class="user-info">
-          <a href="/users/myprofile" class="my-profile"><img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg" alt="Avatar" class="avatar" /></a>
-          <a href="/users/myprofile" class="my-profile"><h3>Yash Wagh</h3></a>
+          <% if(typeof image == "undefined") { %>
+            <a href="/users/myprofile" class="my-profile"><img src="/img/icons8-male-user-90.png" alt="Avatar" class="avatar" /></a>
+          <% } else { %>
+            <a href="/users/myprofile" class="my-profile"><img src="<%= image %>" alt="Avatar" class="avatar" /></a>
+            <% } %>
+          <a href="/users/myprofile" class="my-profile"><h3><%= name %></h3></a>
         </div>
 
         <ul>
@@ -58,8 +62,8 @@
               </div>
             </ul>
           </li>
-          <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
-            <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+          <form action="/logout" class="border s-hidden" method="POST">
+            <i class="material-icons">east</i><button class="log" type="submit" style="cursor: pointer;">Log Out</button>
           </form>
         </ul>
       </div>
@@ -69,177 +73,61 @@
     <div class="right-section">
 
       <p class="line">PROJECTS</p>
-      <form action="" class="search-bar">
-        <input type="text" placeholder="What are you looking for......?">
-        <button>Search</button>
+      <form action="" class="search-bar" method="GET">
+        <input type="text" placeholder="What are you looking for......?" name="search">
+        <button type="submit">Search</button>
       </form>
 
       <div class="all-cards">
-        <!-- Card -->
-        <div class="connect-card">
 
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Yash Wagh</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
+        <% result.forEach(result => { %>
+          <div class="connect-card">
+            <div class="upper-section">
+    
+              <% if(result.user.coverImagePath) { %>
+              <img src="<%= result.user.coverImagePath %>">
+              <% } else { %>
+                <img src="/img/icons8-male-user-90.png">
+                <% } %>
+            
+              <div class="right-card">
+                <p class="user-name"><%= result.user.name %></p>
+                <div class="user-details">
+                  <p class="year"><%= result.user.year %></p>
+                  <p class="field"><%= result.user.branch %></p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="lower-section">
+              <p class="user-name">
+                <%= result.title %>
+              </p>
+  
+              <% if(result.status == "Active") { %>
+              <p class="status-o"><%= result.status %></p>
+              <% } else { %>
+                <p class="status-c"><%= result.status %></p>
+                <% } %>
+  
+              <p class="designation">
+                <%= result.stack %>
+              </p>
+              <p class="user-bio">
+                <%= result.description %>
+              </p>
+  
+              <div class="user-contact">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
               </div>
             </div>
           </div>
-
-          <div class="lower-section">
-            <p class="user-name">
-              Attendance Calculator
-            </p>
-
-            <p class="status-o">Active</p>
-            <p class="designation">
-              MySql, Java
-            </p>
-            <p class="user-bio">
-              Donec lorem dui, commodo ac dolor sed, commodo mattis felis. Praesent euismod malesuada rhoncus. Curabitur
-              ultrices, mauris vel sodales eleifend, mi nibh fermentum elit, sed tristique magna tortor ac nisl.
-              Maecenas ut lacus sit amet tellus bibendum feugiat. Maecenas suscipit vestibulum ex sit amet aliquet. Sed
-              non pharetra dolor. Nullam ac vestibulum nisl, a tempus justo.
-            </p>
-
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Yash Wagh</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="user-name">
-              Ball Run Refactor
-            </p>
-
-            <p class="status-c">Completed</p>
-            <p class="designation">
-              C#, C++
-            </p>
-            <p class="user-bio">
-              Donec lorem dui, commodo ac dolor sed, commodo mattis felis. Praesent euismod malesuada rhoncus. Curabitur
-              ultrices, mauris vel sodales eleifend, mi nibh fermentum elit, sed tristique magna tortor ac nisl.
-              Maecenas ut lacus sit amet tellus bibendum feugiat. Maecenas suscipit vestibulum ex sit amet aliquet. Sed
-              non pharetra dolor. Nullam ac vestibulum nisl, a tempus justo.
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Yash Wagh</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="user-name">
-              Attendance Calculator
-            </p>
-
-            <p class="status-o">Active</p>
-            <p class="designation">
-              MySql, Java
-            </p>
-            <p class="user-bio">
-              Donec lorem dui, commodo ac dolor sed, commodo mattis felis. Praesent euismod malesuada rhoncus. Curabitur
-              ultrices, mauris vel sodales eleifend, mi nibh fermentum elit, sed tristique magna tortor ac nisl.
-              Maecenas ut lacus sit amet tellus bibendum feugiat. Maecenas suscipit vestibulum ex sit amet aliquet. Sed
-              non pharetra dolor. Nullam ac vestibulum nisl, a tempus justo.
-            </p>
-
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Yash Wagh</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="user-name">
-              Ball Run Refactor
-            </p>
-
-            <p class="status-c">Completed</p>
-            <p class="designation">
-              C#, C++
-            </p>
-            <p class="user-bio">
-              Donec lorem dui, commodo ac dolor sed, commodo mattis felis. Praesent euismod malesuada rhoncus. Curabitur
-              ultrices, mauris vel sodales eleifend, mi nibh fermentum elit, sed tristique magna tortor ac nisl.
-              Maecenas ut lacus sit amet tellus bibendum feugiat. Maecenas suscipit vestibulum ex sit amet aliquet. Sed
-              non pharetra dolor. Nullam ac vestibulum nisl, a tempus justo.
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-
+          <% }) %>
+  
       </div>
 
 

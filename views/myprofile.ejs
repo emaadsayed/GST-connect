@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIESGSTportal</title>
+    <title>GST Connect</title>
     <link rel="stylesheet" href="/stylesheets/myprofile.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -34,8 +34,12 @@
       <div class="position">
         <div class="side-nav open">
           <div class="user-info">
-            <a href="/users/myprofile" class="my-profile"><img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg" alt="Avatar" class="avatar" /></a>
-            <a href="/users/myprofile" class="my-profile"><h3>Yash Wagh</h3></a>
+            <% if(typeof image == "undefined") { %>
+              <a href="/users/myprofile" class="my-profile"><img src="/img/icons8-male-user-90.png" alt="Avatar" class="avatar" /></a>
+            <% } else { %>
+              <a href="/users/myprofile" class="my-profile"><img src="<%= image %>" alt="Avatar" class="avatar" /></a>
+              <% } %>
+            <a href="/users/myprofile" class="my-profile"><h3><%= name %></h3></a>
           </div>
   
           <ul>
@@ -66,8 +70,8 @@
                 </div>
               </ul>
             </li>
-            <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
-              <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+            <form action="/logout" class="border s-hidden" method="POST">
+              <i class="material-icons">east</i><button class="log" type="submit" style="cursor: pointer;">Log Out</button>
             </form>
           </ul>
         </div>
@@ -79,21 +83,22 @@
              <div class="container-one">
         
 
-        <p class="line">MY PROFILE</p>
-        <form action="" method="POST">
+        <p class="line">My Profile</p>
+        <form action="/users/myprofile" method="POST">
             <div class="card-body">
                 <div>
                     <label>Profile Photo</label>
-                    <input type="file" name="cover" class="filepond">
+                    <input type="file" name="cover" class="filepond" required>
                   </div>
                 <div class="event-name">
                     <div class="event-name-child">
-                        <p class="name">Name : </p>
-                        <input type="text" placeholder="Full Name" name="name" id="name">
+                        <p class="name">Name </p>
+                        <input type="text" placeholder="Full Name" name="name" value="<%= result.name %>" required>
                     </div>
                     <div class="event-name-child">
-                        <label class="name" for="branch">Choose your branch : </label>
-                        <select name="branch" id="branch" class="i-name" >
+                        <label class="name" for="branch">Choose your branch</label>
+                        <select name="branch" id="branch" class="i-name" required>
+                          <option value="<%= result.branch %>"><%= result.branch %></option>
                         <option value="IT">IT</option>
                         <option value="CE">CE</option>
                         <option value="EXTC">EXTC</option>
@@ -103,8 +108,9 @@
                         </select>
                     </div>
                     <div class="event-name-child">
-                        <label class="name" for="year">Choose your year : </label>
-                        <select name="year" id="year" class="i-name" >
+                        <label class="name" for="year">Choose your year</label>
+                        <select name="year" id="year" class="i-name" required>
+                          <option value="<%= result.year %>"><%= result.year %></option>
                           <option value="FE">FE</option>
                           <option value="SE">SE</option>
                           <option value="TE">TE</option>
@@ -112,34 +118,35 @@
                         </select>
                     </div>
                     <div class="event-name-child">
-                        <p class="name">Contact : </p>
-                        <input type="text" placeholder="Contact" name="contact" id="contact">
+                        <p class="name">Contact</p>
+                        <input type="text" placeholder="Contact" name="contact" id="contact" value="<%= result.contact %>">
                     </div>
                     <div class="event-name-child">
-                        <p class="name">Instagram : </p>
-                        <input type="text" placeholder="Instagram link" name="instagram" id="instagram">
+                        <p class="name">Instagram</p>
+                        <input type="url" placeholder="Instagram link" name="instagram" id="instagram" value="<%= result.instagram %>">
                     </div>
                     <div class="event-name-child">
-                        <p class="name">LinkedIn : </p>
-                        <input type="text" placeholder="LinkedIn link" name="linkedIn" id="linkedIn">
+                        <p class="name">LinkedIn</p>
+                        <input type="url" placeholder="LinkedIn link" name="linkedin" id="linkedIn" value="<%= result.linkedin %>">
                     </div>
                     <div class="event-name-child">
-                        <p class="name">Facebook : </p>
-                        <input type="text" placeholder="Facebook link" name="facebook" id="facebook">
+                        <p class="name">Facebook</p>
+                        <input type="url" placeholder="Facebook link" name="facebook" id="facebook" value="<%= result.facebook %>">
                     </div>
                     <div class="event-name-child">
-                        <p class="name">Skills : </p>
-                        <input type="text" placeholder="Skills" name="skills" id="skills">
+                        <p class="name">Skills</p>
+                        <input type="text" placeholder="Skills" name="skills" id="skills" value="<%= result.skills %>">
                     </div>
                     <div class="event-name-child">
-                        <p class="name">Bio : </p>
-                        <textarea type="text" class="i-name desc" name="bio" id="bio" placeholder="Enter your bio"></textarea>
+                        <p class="name">Bio</p>
+                        <textarea type="text" class="i-name desc" name="bio" id="bio" placeholder="Enter your bio"><%= result.bio %></textarea>
                     </div>
                     <div class="event-name-child">
-                        <label class="name" for="year">Type of Profile : </label>
-                        <select name="status" id="status" class="i-name" >
-                        <option value="private">Private</option>
-                        <option value="public">Public</option>
+                        <label class="name" for="type">Type of Profile</label>
+                        <select name="type" id="type" class="i-name" >
+                          <option value="<%= result.type %>"><%= result.type %></option>
+                        <option value="Private">Private</option>
+                        <option value="Public">Public</option>
                         </select>
                     </div>
                    

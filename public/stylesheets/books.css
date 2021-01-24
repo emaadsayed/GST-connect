@@ -513,6 +513,7 @@ margin-left: 6em;
   .all-cards{
     display: grid;
     grid-template-columns: repeat(4,auto);
+    justify-content: start
 
   }
 

@@ -3,19 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIESGSTportal</title>
+    <title>GST Connect</title>
     <link rel="stylesheet" href="/stylesheets/createproject.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
-    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-    <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
-    <script defer src="/javascripts/fileUpload.js"></script>
+
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
 
@@ -34,8 +28,12 @@
       <div class="position">
         <div class="side-nav open">
           <div class="user-info">
-            <a href="/users/myprofile" class="my-profile"><img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg" alt="Avatar" class="avatar" /></a>
-            <a href="/users/myprofile" class="my-profile"><h3>Yash Wagh</h3></a>
+            <% if(typeof image == "undefined") { %>
+              <a href="/users/myprofile" class="my-profile"><img src="/img/icons8-male-user-90.png" alt="Avatar" class="avatar" /></a>
+            <% } else { %>
+              <a href="/users/myprofile" class="my-profile"><img src="<%= image %>" alt="Avatar" class="avatar" /></a>
+              <% } %>
+            <a href="/users/myprofile" class="my-profile"><h3><%= name %></h3></a>
           </div>
   
           <ul>
@@ -66,8 +64,8 @@
                 </div>
               </ul>
             </li>
-            <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
-              <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+            <form action="/logout" class="border s-hidden" method="POST">
+              <i class="material-icons">east</i><button class="log" type="submit" style="cursor: pointer;">Log Out</button>
             </form>
           </ul>
         </div>
@@ -79,23 +77,23 @@
              <div class="container-one">
         
 
-        <p class="line">ADD PROJECT</p>
-        <form action="" method="POST">
+        <p class="line">Add Project</p>
+        <form action="/users/createproject" method="POST">
             <div class="card-body">
                 <div class="event-name">
-                    <p class="name">Name : </p>
-                    <input type="text" placeholder="Name of the Project" name="" id="">
-                    <p class="name">Stack : </p>
-                    <input type="text" placeholder="Name of the stack used" name="" id="">
-                    <p class="name">Description : </p>
-                    <textarea type="text" class="i-name desc" name="description" placeholder="Enter description"></textarea>
-                    <label for="cars">Choose a status : </label>
-                    <select name="" id="" class="i-name" >
-                      <option value="active">Active</option>
-                      <option value="completed">Completed</option>
+                    <p class="name">Name</p>
+                    <input type="text" placeholder="Name of the Project" name="title" required>
+                    <p class="name">Stack</p>
+                    <input type="text" placeholder="Name of the stack used" name="stack" required>
+                    <p class="name">Description</p>
+                    <textarea type="text" class="i-name desc" name="description" placeholder="Enter description" required></textarea>
+                    <label for="cars">Status</label>
+                    <select name="status" class="i-name" required>
+                      <option value="Active">Active</option>
+                      <option value="Completed">Completed</option>
                     </select>
                 </div>
-                <div><input type="submit" name="" value="SUBMIT" class="s-button"></div>
+                <div><input type="submit" value="SUBMIT" class="s-button"></div>
 
             </div>
         </form>    

@@ -201,10 +201,6 @@ img {
   font-size: 0.85em;
 }
 
-.user-name{
-  text-align: center;
-}
-
 .user-details{
   display: flex;
   justify-content: left;
