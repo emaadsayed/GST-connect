@@ -18,6 +18,7 @@
 
     <div class="top-nav">
       <img src="/img/MAIN.png" alt="">
+      <i class="material-icons menu" style="color: white;">menu</i>
   </div>
 
     <!--------------------- SIDE-NAV ---------------------->
@@ -108,10 +109,10 @@
               <span>Price:</span> Rs. <%= result.price %>
             </p>
             <div class="user-edit">
-              <a href="/users/mybook/edit/<%= result._id %>" style="color: black;"><i class="fa fa-edit" aria-hidden="true"></i></a>
+              <a href="/users/mybook/edit/<%= result._id %>" style="color: white;"><i class="fa fa-edit" aria-hidden="true"></i></a>
 
               <form action="/users/mybook/delete/<%= result._id %>" method="POST">
-                <button style="font-size: large; background-color: transparent; border: none; padding: 0em;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button style="font-size: large; background-color: transparent; border: none; padding: 0em; color: white;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </form>
               </div>
           </div>
@@ -123,7 +124,7 @@
     </div>
 
     <script>
-      const burger = document.querySelector(".top-nav img");
+      const burger = document.querySelector(".top-nav i");
       const side = document.querySelector(".side-nav");
 
       burger.addEventListener("click", (e) => {

@@ -20,6 +20,7 @@
 
       <div class="top-nav">
         <img src="/img/MAIN.png" alt="">
+        <i class="material-icons menu" style="color: white;">menu</i>
     </div>
 
       <!--------------------- SIDE-NAV ---------------------->
@@ -80,13 +81,13 @@
         <form action="/users/createproject" method="POST">
             <div class="card-body">
                 <div class="event-name">
-                    <p class="name">Name</p>
+                    <p class="name" style="color: white;">Name</p>
                     <input type="text" placeholder="Name of the Project" name="title" required>
-                    <p class="name">Stack</p>
+                    <p class="name"style="color: white;" >Stack</p>
                     <input type="text" placeholder="Name of the stack used" name="stack" required>
-                    <p class="name">Description</p>
+                    <p class="name" style="color: white;">Description</p>
                     <textarea type="text" class="i-name desc" name="description" placeholder="Enter description" required></textarea>
-                    <label for="cars">Status</label>
+                    <label for="cars" style="color: white;">Status</label>
                     <select name="status" class="i-name" required>
                       <option value="Active">Active</option>
                       <option value="Completed">Completed</option>
@@ -105,7 +106,7 @@
     </div> <!--/Container-->
 
     <script>
-        const burger = document.querySelector(".top-nav img");
+        const burger = document.querySelector(".top-nav i");
         const side = document.querySelector(".side-nav");
   
         burger.addEventListener("click", (e) => {

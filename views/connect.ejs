@@ -18,6 +18,7 @@
 
     <div class="top-nav">
         <img src="/img/MAIN.png" alt="">
+        <i class="material-icons menu" style="color: white;">menu</i>
     </div>
 
     <!--------------------- SIDE-NAV ---------------------->
@@ -103,18 +104,18 @@
             </p>
             <div class="user-contact">
               <% if(result.contact) { %>
-              <a href="tel:<%= result.branch %>" style="color: black;"><i class="fa fa-phone" aria-hidden="true"></i></a>
+              <a href="tel:<%= result.branch %>" style="color: white;"><i class="fa fa-phone" aria-hidden="true"></i></a>
               <% } %>
               <% if(result.instagram) { %>
-                <a href="<%= result.instagram %>" style="color: black;"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="<%= result.instagram %>" style="color: white;"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                 <% } %>
                 <% if(result.facebook) { %>
-                  <a href="<%= result.facebook %>" style="color: black;"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                  <a href="<%= result.facebook %>" style="color: white;"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
                   <% } %>
                   <% if(result.linkedin) { %>
-                    <a href="<%= result.linkedin %>" style="color: black;"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="<%= result.linkedin %>" style="color: white;"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     <% } %>
-              <a href="mailto:<%= result.email %>" style="color: black;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+              <a href="mailto:<%= result.email %>" style="color: white;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -126,7 +127,7 @@
 
 
     <script>
-      const burger = document.querySelector(".top-nav img");
+      const burger = document.querySelector(".top-nav i");
       const side = document.querySelector(".side-nav");
 
       burger.addEventListener("click", (e) => {
