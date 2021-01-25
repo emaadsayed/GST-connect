@@ -31,26 +31,47 @@ const user = new mongoose.Schema(
     },
     contact: {
       type: String,
-      minlength: 10,
-      maxlength: 10,
+      default: null
     },
     instagram: {
       type: String,
+      default: null
     },
     linkedin: {
       type: String,
+      default: null
     },
     facebook: {
       type: String,
+      default: null
     },
     bio: {
       type: String,
+      default: null
     },
     skills: {
       type: String,
+      default: null
     },
+    type: {
+      type: String,
+      enum: ["Private", "Public"],
+      default: "Private"
   },
+  coverImage: {
+    type: Buffer,
+},
+  coverImageType: {
+    type: String,
+  }
+},
   { timestamps: true }
 );
 
+user.virtual('coverImagePath').get(function() {
+  if (this.coverImage != null && this.coverImageType != null) {
+    return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`
+  }
+})
+ 
 module.exports = mongoose.model("User", user);

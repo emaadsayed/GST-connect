@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GST Connect</title>
-    <link rel="stylesheet" href="/stylesheets/createbook.css" />
+    <link rel="stylesheet" href="/stylesheets/myprofile.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -27,6 +27,7 @@
       <div class="top-nav">
         <img src="/img/MAIN.png" alt="">
     </div>
+
       <!--------------------- SIDE-NAV ---------------------->
 
       <div class="position">
@@ -81,22 +82,75 @@
              <div class="container-one">
         
 
-        <p class="line">Add Book</p>
-        <form action="/users/createbook" method="POST">
+        <p class="line">My Profile</p>
+        <form action="/users/myprofile" method="POST">
             <div class="card-body">
-                <div class="event-name">
-                    <p class="name">Name</p>
-                    <input type="text" placeholder="Name of the book" name="subject" required>
-                    <p class="name">Author</p>
-                    <input type="text" placeholder="Name of the author" name="publication" required>
-                    <p class="name">Price</p>
-                    <input type="text" placeholder="Enter the price" name="price" required>
-                </div>
                 <div>
-                  <label>Cover</label>
-                  <input type="file" name="cover" class="filepond" required>
+                    <label>Profile Photo</label>
+                    <input type="file" name="cover" class="filepond" required>
+                  </div>
+                <div class="event-name">
+                    <div class="event-name-child">
+                        <p class="name">Name </p>
+                        <input type="text" placeholder="Full Name" name="name" value="<%= result.name %>" required>
+                    </div>
+                    <div class="event-name-child">
+                        <label class="name" for="branch">Choose your branch</label>
+                        <select name="branch" id="branch" class="i-name" required>
+                          <option value="<%= result.branch %>"><%= result.branch %></option>
+                        <option value="IT">IT</option>
+                        <option value="CE">CE</option>
+                        <option value="EXTC">EXTC</option>
+                        <option value="ME">ME</option>
+                        <option value="PPT">PPT</option>
+                        <option value="ECE">ECE</option>
+                        </select>
+                    </div>
+                    <div class="event-name-child">
+                        <label class="name" for="year">Choose your year</label>
+                        <select name="year" id="year" class="i-name" required>
+                          <option value="<%= result.year %>"><%= result.year %></option>
+                          <option value="FE">FE</option>
+                          <option value="SE">SE</option>
+                          <option value="TE">TE</option>
+                          <option value="BE">BE</option>
+                        </select>
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Contact</p>
+                        <input type="text" placeholder="Contact" name="contact" id="contact" value="<%= result.contact %>">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Instagram</p>
+                        <input type="url" placeholder="Instagram link" name="instagram" id="instagram" value="<%= result.instagram %>">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">LinkedIn</p>
+                        <input type="url" placeholder="LinkedIn link" name="linkedin" id="linkedIn" value="<%= result.linkedin %>">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Facebook</p>
+                        <input type="url" placeholder="Facebook link" name="facebook" id="facebook" value="<%= result.facebook %>">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Skills</p>
+                        <input type="text" placeholder="Skills" name="skills" id="skills" value="<%= result.skills %>">
+                    </div>
+                    <div class="event-name-child">
+                        <p class="name">Bio</p>
+                        <textarea type="text" class="i-name desc" name="bio" id="bio" placeholder="Enter your bio"><%= result.bio %></textarea>
+                    </div>
+                    <div class="event-name-child">
+                        <label class="name" for="type">Type of Profile</label>
+                        <select name="type" id="type" class="i-name" >
+                          <option value="<%= result.type %>"><%= result.type %></option>
+                        <option value="Private">Private</option>
+                        <option value="Public">Public</option>
+                        </select>
+                    </div>
+                   
                 </div>
-                <div><input type="submit" value="SUBMIT" class="s-button"></div>
+                <div><input type="submit" name="" value="SUBMIT" class="s-button"></div>
 
             </div>
         </form>    

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIESGSTportal</title>
+  <title>GST Connect</title>
   <link rel="stylesheet" href="/stylesheets/connect.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -17,8 +17,7 @@
     <!--------------------- TOP-NAV ---------------------->
 
     <div class="top-nav">
-      <h1>SIESGSTportal<span>.</span></h1>
-      <i class="material-icons menu">menu</i>
+        <img src="/img/MAIN.png" alt="">
     </div>
 
     <!--------------------- SIDE-NAV ---------------------->
@@ -26,8 +25,12 @@
     <div class="position">
       <div class="side-nav open">
         <div class="user-info">
-          <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg" alt="Avatar" class="avatar" />
-          <h3>Yash Wagh</h3>
+          <% if(typeof image == "undefined") { %>
+            <a href="/users/myprofile" class="my-profile"><img src="/img/icons8-male-user-90.png" alt="Avatar" class="avatar" /></a>
+          <% } else { %>
+            <a href="/users/myprofile" class="my-profile"><img src="<%= image %>" alt="Avatar" class="avatar" /></a>
+            <% } %>
+          <a href="/users/myprofile" class="my-profile"><h3><%= name %></h3></a>
         </div>
 
         <ul>
@@ -42,7 +45,7 @@
             <ul>
               <div class="inner">
                 <li id="i-top"> <i class="material-icons">person</i><a href="/users/myprojects">My Projects</a></li>
-                <li> <i class="material-icons">create</i><a href="/users/createproject">Create Project</a></li>
+                <li> <i class="material-icons">create</i><a href="/users/createproject">Add Project</a></li>
               </div>
             </ul>
           </li>
@@ -54,12 +57,12 @@
             <ul>
               <div class="innerTwo">
                 <li id="i-top"> <i class="material-icons">person</i><a href="/users/mybooks">My Books</a></li>
-                <li> <i class="material-icons">create</i><a href="/users/createbook">Create Book</a></li>
+                <li> <i class="material-icons">create</i><a href="/users/createbook">Add Book</a></li>
               </div>
             </ul>
           </li>
-          <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
-            <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+          <form action="/logout" class="border s-hidden" method="POST">
+            <i class="material-icons">east</i><button class="log" type="submit" style="cursor: pointer;">Log Out</button>
           </form>
         </ul>
       </div>
@@ -70,327 +73,60 @@
     <div class="right-section">
 
       <p class="line">CONNECT</p>
-      <form action="" class="search-bar">
-        <input type="text" placeholder="What are you looking for......?">
-        <button>Search</button>
+      <form action="" class="search-bar" method="GET">
+        <input type="text" placeholder="What are you looking for......?" name="search">
+        <button type="submit">Search</button>
       </form>
 
       <div class="all-cards">
-        <!-- Card -->
+    
+        <% result.forEach(result => { %>
+          <% if(result.type != "Private") { %>
         <div class="connect-card">
-
           <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
+            <img src="<%= result.coverImagePath %>">
             <div class="right-card">
-              <p class="user-name">Yash Wagh</p>
+              <p class="user-name"><%= result.name %></p>
               <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
+                <p class="year"><%= result.year %></p>
+                <p class="field"><%= result.branch %></p>
               </div>
             </div>
           </div>
 
           <div class="lower-section">
             <p class="designation">
-              Game Developer
+              <%= result.skills %>
             </p>
             <p class="user-bio">
-              Game developers work on teams to plan, design, and produce video games for computers, mobile devices, or
-              game consoles.
+              <%= result.bio %>
             </p>
             <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              <% if(result.contact) { %>
+              <a href="tel:<%= result.branch %>" style="color: black;"><i class="fa fa-phone" aria-hidden="true"></i></a>
+              <% } %>
+              <% if(result.instagram) { %>
+                <a href="<%= result.instagram %>" style="color: black;"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <% } %>
+                <% if(result.facebook) { %>
+                  <a href="<%= result.facebook %>" style="color: black;"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                  <% } %>
+                  <% if(result.linkedin) { %>
+                    <a href="<%= result.linkedin %>" style="color: black;"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    <% } %>
+              <a href="mailto:<%= result.email %>" style="color: black;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
             </div>
           </div>
-
         </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Emaad Sayed</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="designation">
-              UI/UX Designer
-            </p>
-            <p class="user-bio">
-              A UI, UX, and front-end web developer is responsible for applying interactive and visual design principles
-              on websites and web applications for a positive and cohesive user experience.
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Sahil Raut</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="designation">
-              Web Developer
-            </p>
-            <p class="user-bio">
-              I'm a web developer. I spend my whole day, practically every day, experimenting with HTML, CSS, and
-              JavaScript; dabbling with Python and Ruby;
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Yash Wagh</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="designation">
-              Game Developer
-            </p>
-            <p class="user-bio">
-              Game developers work on teams to plan, design, and produce video games for computers, mobile devices, or
-              game consoles.
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Emaad Sayed</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="designation">
-              UI/UX Designer
-            </p>
-            <p class="user-bio">
-              A UI, UX, and front-end web developer is responsible for applying interactive and visual design principles
-              on websites and web applications for a positive and cohesive user experience.
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Sahil Raut</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="designation">
-              Web Developer
-            </p>
-            <p class="user-bio">
-              I'm a web developer. I spend my whole day, practically every day, experimenting with HTML, CSS, and
-              JavaScript; dabbling with Python and Ruby;
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Yash Wagh</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="designation">
-              Game Developer
-            </p>
-            <p class="user-bio">
-              Game developers work on teams to plan, design, and produce video games for computers, mobile devices, or
-              game consoles.
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Emaad Sayed</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="designation">
-              UI/UX Designer
-            </p>
-            <p class="user-bio">
-              A UI, UX, and front-end web developer is responsible for applying interactive and visual design principles
-              on websites and web applications for a positive and cohesive user experience.
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
-        <!-- Card -->
-        <div class="connect-card">
-
-          <div class="upper-section">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg">
-            <div class="right-card">
-              <p class="user-name">Sahil Raut</p>
-              <div class="user-details">
-                <p class="year">SE</p>
-                <p class="field">IT</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lower-section">
-            <p class="designation">
-              Web Developer
-            </p>
-            <p class="user-bio">
-              I'm a web developer. I spend my whole day, practically every day, experimenting with HTML, CSS, and
-              JavaScript; dabbling with Python and Ruby;
-            </p>
-            <div class="user-contact">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </div>
-          </div>
-
-        </div>
-        <!-- Card End -->
-
+        <% }}) %>
+ 
       </div>
-
-
 
     </div>
 
 
     <script>
-      const burger = document.querySelector(".top-nav i");
+      const burger = document.querySelector(".top-nav img");
       const side = document.querySelector(".side-nav");
 
       burger.addEventListener("click", (e) => {

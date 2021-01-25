@@ -2,8 +2,10 @@ var express = require("express");
 var router = express.Router();
 const userController = require("../controllers/userController");
 
+router.get('/myprofile', userController.profileGet);
+
 /* GET users listing. */
-router.get("/connect", userController.connect);
+router.get("/connect", userController.connectGet);
 
 router.get("/projects", userController.projectGet);
 router.get("/myprojects", userController.myProject);
@@ -21,9 +23,6 @@ router.post("/mybook/delete/:id", userController.bookDelete);
 router.get("/mybook/edit/:id", userController.bookEditGet);
 router.post("/mybook/edit/:id", userController.bookEdit);
 
-// router.get('/profile', userController.profileGet);
-// router.post('/profile', userController.profile);
-
-// router.get('/connect', userController.connectGet);
+router.post('/myprofile', userController.profile);
 
 module.exports = router;

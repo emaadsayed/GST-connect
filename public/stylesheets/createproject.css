@@ -38,10 +38,9 @@ img {
 }
 
 /*----------------------- TOP-NAV -------------------------*/
-
-.top-nav h1 {
-  font-weight: bold;
-  font-size: 2em;
+.top-nav img {
+  height: auto;
+  width: 150px;
 }
 
 .top-nav span {
@@ -106,6 +105,10 @@ img {
     height: 100px;
     border-radius: 50%;
   }
+
+  .my-profile{
+    cursor: pointer;
+}
   
   .user-info {
     padding-top: 1.5em;

@@ -3,19 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIESGSTportal</title>
+    <title>GST Connect</title>
     <link rel="stylesheet" href="/stylesheets/createproject.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <!-- <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
-    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-    <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
-    <script defer src="/javascripts/fileUpload.js"></script> -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
 
@@ -25,17 +18,20 @@
       <!--------------------- TOP-NAV ---------------------->
 
       <div class="top-nav">
-        <h1>SIESGSTportal<span>.</span></h1>
-        <i class="material-icons menu">menu</i>
-      </div>
+        <img src="/img/MAIN.png" alt="">
+    </div>
 
       <!--------------------- SIDE-NAV ---------------------->
 
       <div class="position">
         <div class="side-nav open">
           <div class="user-info">
-            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg" alt="Avatar" class="avatar" />
-            <h3>Yash Wagh</h3>
+            <% if(typeof image == "undefined") { %>
+              <a href="/users/myprofile" class="my-profile"><img src="/img/icons8-male-user-90.png" alt="Avatar" class="avatar" /></a>
+            <% } else { %>
+              <a href="/users/myprofile" class="my-profile"><img src="<%= image %>" alt="Avatar" class="avatar" /></a>
+              <% } %>
+            <a href="/users/myprofile" class="my-profile"><h3><%= name %></h3></a>
           </div>
   
           <ul>
@@ -50,7 +46,7 @@
               <ul>
                 <div class="inner">
                   <li id="i-top"> <i class="material-icons">person</i><a href="/users/myprojects">My Projects</a></li>
-                  <li> <i class="material-icons">create</i><a href="/users/createproject">Create Project</a></li>
+                  <li> <i class="material-icons">create</i><a href="/users/createproject">Add Project</a></li>
                 </div>
               </ul>
             </li>
@@ -62,12 +58,12 @@
               <ul>
                 <div class="innerTwo">
                   <li id="i-top"> <i class="material-icons">person</i><a href="/users/mybooks">My Books</a></li>
-                  <li> <i class="material-icons">create</i><a href="/users/createbook">Create Book</a></li>
+                  <li> <i class="material-icons">create</i><a href="/users/createbook">Add Book</a></li>
                 </div>
               </ul>
             </li>
-            <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
-              <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+            <form action="/logout" class="border s-hidden" method="POST">
+              <i class="material-icons">east</i><button class="log" type="submit" style="cursor: pointer;">Log Out</button>
             </form>
           </ul>
         </div>
@@ -84,13 +80,13 @@
             <div class="card-body">
                 <div class="event-name">
                     <p class="name">Name</p>
-                    <input type="text" placeholder="Name of the Project" name="title" value="<%= result.title %>">
+                    <input type="text" placeholder="Name of the Project" name="title" value="<%= result.title %>" required>
                     <p class="name">Stack</p>
-                    <input type="text" placeholder="Name of the stack used" name="stack" value="<%= result.stack %>">
+                    <input type="text" placeholder="Name of the stack used" name="stack" value="<%= result.stack %>" required>
                     <p class="name">Description</p>
-                    <textarea type="text" class="i-name desc" name="description" placeholder="Enter description"><%= result.description %></textarea>
+                    <textarea type="text" class="i-name desc" name="description" placeholder="Enter description" required><%= result.description %></textarea>
                     <label for="cars">Status</label>
-                    <select name="status" class="i-name" >
+                    <select name="status" class="i-name" required>
                         <option value="<%= result.status %>"><%= result.status %></option>
                       <option value="Active">Active</option>
                       <option value="Completed">Completed</option>
@@ -104,7 +100,7 @@
     </div> <!--/Container-->
 
     <script>
-        const burger = document.querySelector(".top-nav i");
+        const burger = document.querySelector(".top-nav img");
         const side = document.querySelector(".side-nav");
   
         burger.addEventListener("click", (e) => {

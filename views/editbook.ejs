@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIESGSTportal</title>
+    <title>GST Connect</title>
     <link rel="stylesheet" href="/stylesheets/createbook.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -39,21 +39,20 @@
       <!--------------------- TOP-NAV ---------------------->
 
       <div class="top-nav">
-        <h1>SIESGSTportal<span>.</span></h1>
-        <i class="material-icons menu">menu</i>
-      </div>
+        <img src="/img/MAIN.png" alt="">
+    </div>
 
       <!--------------------- SIDE-NAV ---------------------->
 
       <div class="position">
         <div class="side-nav open">
           <div class="user-info">
-            <img
-              src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg"
-              alt="Avatar"
-              class="avatar"
-            />
-            <h3>Yash Wagh</h3>
+            <% if(typeof image == "undefined") { %>
+              <a href="/users/myprofile" class="my-profile"><img src="/img/icons8-male-user-90.png" alt="Avatar" class="avatar" /></a>
+            <% } else { %>
+              <a href="/users/myprofile" class="my-profile"><img src="<%= image %>" alt="Avatar" class="avatar" /></a>
+              <% } %>
+            <a href="/users/myprofile" class="my-profile"><h3><%= name %></h3></a>
           </div>
 
           <ul>
@@ -75,7 +74,7 @@
                   </li>
                   <li>
                     <i class="material-icons">create</i
-                    ><a href="/users/createproject">Create Project</a>
+                    ><a href="/users/createproject">Add Project</a>
                   </li>
                 </div>
               </ul>
@@ -94,18 +93,13 @@
                   </li>
                   <li>
                     <i class="material-icons">create</i
-                    ><a href="/users/createbook">Create Book</a>
+                    ><a href="/users/createbook">Add Book</a>
                   </li>
                 </div>
               </ul>
             </li>
-            <form
-              action="/signout?_method=DELETE"
-              class="border s-hidden"
-              method="POST"
-            >
-              <i class="material-icons">east</i
-              ><button class="log" type="submit">Log Out</button>
+            <form action="/logout" class="border s-hidden" method="POST">
+              <i class="material-icons">east</i><button class="log" type="submit" style="cursor: pointer;">Log Out</button>
             </form>
           </ul>
         </div>
@@ -124,6 +118,7 @@
                 placeholder="Name of the book"
                 name="subject"
                 value="<%= result.subject %>"
+                required
               />
               <p class="name">Author</p>
               <input
@@ -131,13 +126,14 @@
                 placeholder="Name of the author"
                 name="publication"
                 value="<%= result.publication %>"
+                required
               />
               <p class="name">Price</p>
-              <input type="text" placeholder="Enter the price" name="price" value="<%= result.price %>"/>
+              <input type="text" placeholder="Enter the price" name="price" value="<%= result.price %>" required/>
             </div>
             <div>
               <label>Cover</label>
-              <input type="file" name="cover" class="filepond" />
+              <input type="file" name="cover" class="filepond" required/>
             </div>
             <div><input type="submit" value="SUBMIT" class="s-button" /></div>
           </div>
@@ -147,7 +143,7 @@
     <!--/Container-->
 
     <script>
-      const burger = document.querySelector(".top-nav i");
+      const burger = document.querySelector(".top-nav img");
       const side = document.querySelector(".side-nav");
 
       burger.addEventListener("click", (e) => {

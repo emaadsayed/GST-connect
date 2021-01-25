@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
 module.exports.index = async (req, res) => {
-    res.render('index', { title: 'Express' });
+    res.render('index');
 }
 
 module.exports.signUp = async (req, res) => {
@@ -15,11 +15,12 @@ module.exports.signUp = async (req, res) => {
           year: req.body.year,
           password: hashedPassword,
         });
-        console.log(user);
-        await user.save();
-        res.send("success");
-      } catch {
-        res.send("failed");
+        let data = await user.save();
+        req.session.userObj = data;
+        req.session.image = data.coverImagePath;
+        res.redirect("/users/connect");
+      } catch{
+        res.redirect("/");
       }
     }
 
@@ -33,23 +34,22 @@ module.exports.signUp = async (req, res) => {
               function (err, result) {
                 if (result) {
                   req.session.userObj = user[0];
-                  // res.status(200);
+                  req.session.image = user[0].coverImagePath
                   res.redirect("/users/connect");
-                // res.send("success");
                 } else {
-                //   res.status(401);
-                //   req.flash("homepageMessage", "Incorrect Password");
-                //   res.redirect("/");
-                res.send("failed");
+                  res.redirect("/");
                 }
               }
             );
           })
           .catch((e) => {
-            // res.status(404);
-            // req.flash("homepageMessage", "User does not exist");
-            // res.redirect("/");
-            res.send("failed");
+            res.redirect("/");
           }); 
     } 
+
+    module.exports.logout = async (req, res) => {
+      req.session.destroy();
+      res.redirect("/");
+    }
+
  
